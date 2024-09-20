@@ -3,4 +3,5 @@ export class User {
     email!: String;
     password!: String;
     password_confirmation!: String; 
+    privilege!: string;
 }

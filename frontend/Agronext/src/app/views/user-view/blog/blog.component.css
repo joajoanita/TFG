@@ -1,0 +1,28 @@
+.height-img{
+    height: 75%;
+    object-fit: cover;
+}
+
+.height-div{
+    height: 500px;
+    margin-bottom: 2rem;
+    width: 300px;
+}
+
+.btn-width{
+    width: 32px;
+    height: 32px;
+    left:273px;
+    top:-13px;
+
+}
+
+.border-width{
+    border-width:2px !important;
+    border-color:#8C0000 !important;
+}
+
+.btn-width2{
+    left: 250px;
+    top:-13px;
+}

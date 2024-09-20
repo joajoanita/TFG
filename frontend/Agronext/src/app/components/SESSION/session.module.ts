@@ -1,24 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RegisterComponent } from './register/register.component';
+import { BASICSModule } from '../BASICS/basics.module';
+
+
 
 
 
 @NgModule({
   declarations: [
-    RegisterComponent,
     LoginComponent,
-    UserProfileComponent
+    RegisterComponent,
+    
+   
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    BASICSModule
   ],
-  exports:[
-    LoginComponent,
-    RegisterComponent,
-    UserProfileComponent
-  ]
+ 
 })
 export class SESSIONModule { }

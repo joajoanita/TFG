@@ -8,13 +8,14 @@ import { ViewsModule } from './views/views.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/Auth/auth-interceptor.service';
-import { RoleDirective } from './Directive/role.directive'; 
+
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoleDirective,
+    
 
     
   ],
@@ -25,7 +26,9 @@ import { RoleDirective } from './Directive/role.directive';
     ViewsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
+    
   ],
   providers: [
     {

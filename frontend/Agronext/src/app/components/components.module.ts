@@ -3,18 +3,27 @@ import { CommonModule } from '@angular/common';
 import { USERModule } from './USER/user.module';
 import { BLOGModule } from './BLOG/blog.module';
 import { SESSIONModule } from './SESSION/session.module';
+import { BASICSModule } from './BASICS/basics.module';
+import { RouterModule } from '@angular/router';
+import {ReactiveFormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:  [
     USERModule,
     BLOGModule,
-    SESSIONModule
+    SESSIONModule,
+    BASICSModule,
   ]
 })
 export class ComponentsModule { }

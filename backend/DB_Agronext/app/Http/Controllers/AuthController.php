@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
 
+
+
 class AuthController extends Controller
 {
     // Para que no haya una clase accesible sin token, exluiremos login y register. 
@@ -15,6 +17,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
+        
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => [
@@ -40,6 +43,10 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+
+        $existingUser = User::find(1);
+
+
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|between:2,20',
             'email' => 'required|email|string|max:100|unique:users',
@@ -58,15 +65,17 @@ class AuthController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $user = User::create(array_merge(
-            $validator->validated(),
-            ['password' => bcrypt($request->password)]
-        ));
-        
-        return response ()->json([
-            'message' => 'User successfull registered',
-            'user' => $user
-        ], 201);
+        // Determinar el privilegio del nuevo usuario
+        $privilege = $existingUser ? 'user' : 'admin';
+
+         // Crear el nuevo usuario con el rol adecuado
+         $user = User::create(array_merge(
+        $validator->validated(),
+        [
+            'password' => bcrypt($request->password),
+            'privilege' => $privilege
+        ]
+         ));
     }
 
     public function logout(){
@@ -79,10 +88,12 @@ class AuthController extends Controller
         return $this->createNewToken(auth()->refresh());
     }
         
-    // Renderiza lso datos del usuario que ha iniciado sesión 
+    // Renderiza los datos del usuario que ha iniciado sesión 
     public function userProfile() {
         return response()->json(auth()->user());
     }
+
+ 
 
     // Crea un nuevo token de autentificación JWT durante el tiempo que hemos puesto (expires_in)
     protected function createNewToken($token){
