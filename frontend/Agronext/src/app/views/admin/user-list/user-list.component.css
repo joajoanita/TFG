@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+}
+th {
+    background-color: #0B650C ;
+    color: white;
+    padding: 10px;
+    border: 1px solid #0B650C ;
+}
+td {
+    padding: 10px;
+    border: 1px solid #0B650C ;
+}
+
+tr:hover {
+    background-color: #e2e6ea;
+}
+
+
+.email-container{
+    justify-content: space-between;
+}

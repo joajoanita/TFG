@@ -1,0 +1,26 @@
+<section>
+    <div class="container mt-5">
+        <div class="col-auto d-flex">
+            <table class="table-bordered">
+                <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                </tr>
+                <tr *ngFor="let usuario of user"> 
+                    <td>{{usuario.id}}</td>
+                    <td>{{usuario.name}}</td>
+                    <td >
+                        <div class="d-flex email-container">
+                            {{usuario.email}} 
+                            <div >
+                                <button class="btn btn-dark-green mx-3" [routerLink]="['/editUsers', usuario.id]">Editar</button>
+                                <button class="btn btn-danger" (click)="onDeleteUsers(usuario.id)">Borrar</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>

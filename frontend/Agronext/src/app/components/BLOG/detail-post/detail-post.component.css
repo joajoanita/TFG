@@ -1,0 +1,62 @@
+.img-height{
+    height: 400px;
+    object-fit: cover;
+}
+
+.empty-div-square{
+  height: 100px; 
+  top: 300px;
+  z-index: 10; 
+  background-color: white;
+}
+
+.empty-div-semi-circle{
+    height: 200px; 
+    top: 200px;
+    z-index: 10; 
+    background-color: white;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.title-class{
+    z-index: 10;
+    top: 280px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    
+}
+
+.category-text{
+    z-index: 10;
+    top: 240px;
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+body{
+    font-family: "Varela Round", sans-serif;
+    background-color: #D7E9D8;
+    box-sizing: content-box;
+
+} 
+
+@media (max-width: 733px) {
+   .title-class{
+        top:320px;
+        width: 75%;
+        left: 60%; 
+        transform: translateX(-50%); 
+   }
+  }
+
+  @media (max-width: 576px) {
+    .title-class{
+         top:320px;
+         width: 75%;
+         left: 50%; 
+         transform: translateX(-50%); 
+         font-size: 20px;
+    }
+   }
+ 

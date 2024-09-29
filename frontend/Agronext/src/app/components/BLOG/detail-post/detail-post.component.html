@@ -1,0 +1,14 @@
+<div class="position-relative text-font">
+    <img [src]="getImageUrl(blog.blogImage)" alt="{{blog.title}}" class=" w-100 img-fluid img-height">
+    <div class="empty-div-square position-absolute w-100"></div>
+    <div class="empty-div-semi-circle w-50 position-absolute rounded-circle"></div>
+    <h4 class="olive-green position-absolute category-text text-uppercase">{{ blog.blogTag }}</h4>
+    <h1 class="position-absolute title-class text-uppercase green">{{ blog.title }}</h1>
+  </div>
+  
+  
+  <section class="container">
+  <div *ngIf="blog" class="mt-4 bg-white p-5 rounded-4">
+    <p>{{ blog.description }}</p>
+  </div>
+  </section>

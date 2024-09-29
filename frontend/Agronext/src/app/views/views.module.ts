@@ -4,6 +4,7 @@ import { UserViewModule } from './user-view/user-view.module';
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { BASICSModule } from '../components/BASICS/basics.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { BASICSModule } from '../components/BASICS/basics.module';
   imports: [
     CommonModule,
     RouterModule,
-    BASICSModule
+    BASICSModule,
+    AppRoutingModule
   ],
   exports: [
     UserViewModule,

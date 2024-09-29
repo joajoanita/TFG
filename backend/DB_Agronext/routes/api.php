@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 
 Route::group([
     'middleware' => 'api',
@@ -25,7 +26,16 @@ Route::group([
      Route::post('/blogStore',           [BlogController::class, 'blogStore']);
      Route::get('/blogIndex',            [BlogController::class, 'index']);
      Route::delete('/deletePost/{id}',   [BlogController::class, 'delete']);
-     Route::get('/displayPost/{id}',     [BlogController::class, 'displayBlog']);
-     Route::put('/editPost/{id}',        [BlogController::class, 'editBlog']);
+     Route::get('/displayPost/{id}',     [BlogController::class, 'displayPost']);
+     Route::put('/editBlog/{id}',        [BlogController::class, 'editBlog']);
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'user'
+], function($router){
+    Route::get('/displayUsers',         [UserController::class, 'displayUsers']);
+    Route::put('/editUsers/{id}',       [UserController::class, 'editUsers']);
+    Route::delete('/deleteUsers/{id}',  [UserController::class, 'deleteUsers']);
 });
 

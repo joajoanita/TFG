@@ -31,6 +31,6 @@ export class BlogService {
 
   // Editar los blog post (UPDATE)
   updatePost(blogId: any, postData:any) : Observable<any>{
-    return this.http.put(`http://127.0.0.1:8000/api/blog/editPost/`+blogId, postData);
+    return this.http.put(`http://127.0.0.1:8000/api/blog/editBlog/`+blogId, postData);
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-//import { BlogServiceService } from 'src/app/shared/blog-service.service';
+import { BlogService } from '../../../services/Blog/blog.service';
+
 
 
 
@@ -16,19 +17,19 @@ export class HomeComponent implements OnInit{
   blogPosts: any[] = [];
 
   constructor(
-    //private blogService: BlogServiceService,
+    private blogService: BlogService,
     private http: HttpClient
   ){
 
   }
   ngOnInit(): void {
-     // this.cargarBlogPost();
+      this.displayPosts();
       
     
   }
-/*
-  cargarBlogPost(){
-    this.blogService.getBlogPosts().subscribe(
+
+  displayPosts(){
+    this.blogService.displayPosts().subscribe(
       data => {
         this.blogPosts = data;
       },
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit{
       }
     );
   }
-    */
+    
   getImageUrl(imagePath: string): string{
     return `http://127.0.0.1:8000/images/blogPost/${imagePath}`;
   }

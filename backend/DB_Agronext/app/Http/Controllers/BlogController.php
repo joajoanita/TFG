@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 
 class BlogController extends Controller
@@ -49,15 +50,32 @@ class BlogController extends Controller
     }
 
     //Eliminar el post que queramos según ID
-    public function delete($id){
-        $blogPost = Blog::find($id);
+    public function delete($id) {
 
-        if(!$blogPost) {
+        $blogPost = Blog::find($id);
+        
+
+        if (!$blogPost) {
             return response()->json(['message' => 'No se ha encontrado el post buscado'], 404);
-        } else {
+        } else{
+
+        // Le estamos asignando a imageFile el nombre de la imagen del post
+        $imageFile = $blogPost->blogImage; 
+        //Aquí le estamos asignando la ruta donde he almacenado la imagen y la concateno con el nombre de la imagen 
+        $imagePath = public_path('images/blogPost/' . $imageFile); 
+
+        //Estamos haciendo un condicional para ver si existe, si existe, lo elimina y sino me da error 500
+        if ($imageFile && file_exists($imagePath)) {  //Aquí verificamos que el nombre de la imagen existe en esa ruta
+            if (!unlink($imagePath)) { //Si no existe, no puede eliminarla y me da error 500
+                return response()->json(['message' => 'No se ha podido borrar la imagen'], 500); 
+            }
+        }
             $blogPost->delete();
+        
             return response()->json(['message' => 'El post se ha eliminado con éxito'], 200);
-        }  
+        }
+
+       
     }
 
     //Mostrar por pantalla un ÚNICO post de blog (para visualizarlo)
@@ -65,7 +83,7 @@ class BlogController extends Controller
         $blogPost = Blog::find($id);
 
         if (!$blogPost) {
-            return response()->json(['message' => 'No se ha encontrado ese post específico'], 404);
+            return response()->json(['message' => 'No se ha encontrado ese post'], 404);
         } else {
             return response()->json($blogPost, 200);
         }
@@ -73,7 +91,11 @@ class BlogController extends Controller
 
     //Editar un ÚNICO post de blog 
     public function editBlog($id, Request $request){
-        $blogPost = BlogPost::find($id);
+        $blogPost = Blog::find($id);
+        
+        if (!$blogPost) {
+            return response()->json(['error' => 'Blog post not found'], 404);
+        }
         
         $blogPost->title = $request->title;
         $blogPost->description = $request->description;

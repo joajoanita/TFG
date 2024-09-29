@@ -15,10 +15,10 @@ class Blog extends Model
         'description',
         'blogImage',
         'blogTag',
-        'id_user',
+        'user_id',
     ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

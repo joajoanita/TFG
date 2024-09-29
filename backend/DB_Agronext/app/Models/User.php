@@ -57,6 +57,6 @@ class User extends Authenticatable implements JWTSubject
     } 
 
     public function blog(){
-        return $this->hasMany(Blog::class, 'user_id');
+        return $this->hasMany(Blog::class, 'id');
     }
 }

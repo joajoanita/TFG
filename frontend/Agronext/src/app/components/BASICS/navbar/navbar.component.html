@@ -1,7 +1,7 @@
 <section>
     <div class="green p-2">
         <div class="container gap-3 d-flex justify-content-end">
-            <button class="btn btn-outline-light btn-sm" *ngIf="userPrivilege === 'admin'" routerLink="/userProfileList">Ver Usuarios</button>
+            <button class="btn btn-outline-light btn-sm" *ngIf="userPrivilege === 'admin'" routerLink="/userList">Ver Usuarios</button>
             <button class="btn btn-outline-light btn-sm fs-6" routerLink="/login">Login</button>
             <button class="btn btn-outline-light btn-sm fs-6" (click)="signOut()" *ngIf="isSignedIn">Logout</button>
             <button class="btn btn-outline-light btn-sm" *ngIf="isSignedIn" routerLink="/profile">Ver Perfil</button>

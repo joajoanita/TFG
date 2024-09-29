@@ -10,6 +10,9 @@ import { AdminGuard } from './guards/admin-guard.guard';
 import { BlogComponent } from './views/user-view/blog/blog.component';
 import { CreatePostComponent } from './components/BLOG/create-post/create-post.component';
 import { EditPostComponent } from './components/BLOG/edit-post/edit-post.component';
+import { DetailPostComponent } from './components/BLOG/detail-post/detail-post.component';
+import { UserListComponent } from './views/admin/user-list/user-list.component';
+import { EditUserComponent } from './components/USER/edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent},
   { path: 'createBlog', component: CreatePostComponent},
   { path: 'editBlog/:blogId', component: EditPostComponent},
+  { path: 'detailPost/:blogId', component: DetailPostComponent},
+  { path: 'userList', component: UserListComponent},
+  { path: 'editUsers/:userId', component: EditUserComponent},
   { path: 'adminHome', component: AdminHomeComponent, canActivate: [AdminGuard]},
   { path: '**', redirectTo: '/home', pathMatch: 'full'}
   
